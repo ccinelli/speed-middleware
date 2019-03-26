@@ -1,0 +1,27 @@
+#!/bin/bash
+
+{ # this ensures the entire script is downloaded #
+
+# Install or update nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+
+# Active nvm in the current shell
+export NVM_DIR="${XDG_CONFIG_HOME/:-$HOME/.}nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# Install node 10
+nvm install 10.15.2
+nvm alias default 10.5.2
+
+# Install a few global utilities
+npm install -g yarn nodemon browser-refresh pwmetrics marko-cli ps-list pm2 now psi autocannon clinic
+
+# Create a convenient location
+mkdir -p ~/dev
+
+# Get into the folder
+cd ~/dev
+
+git clone https://github.com/ccinelli/speed-middleware.git 
+
+} # this ensures the entire script is downloaded #
